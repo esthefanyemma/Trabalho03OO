@@ -293,6 +293,51 @@ public class SistemaController {
         }
     }
     
+    public Vendedor buscarVendedorPorId(int vendedorId) throws Exception {
+        verificarPermissaoGerente();
+        
+        Usuario usuario = usuarioDAO.buscarPorId(vendedorId);
+        if (usuario == null || !(usuario instanceof Vendedor)) {
+            throw new ValidacaoException("Vendedor não encontrado");
+        }
+        
+        Vendedor vendedor = (Vendedor) usuario;
+        Gerente gerenteLogado = (Gerente) authController.getUsuarioLogado();
+        
+        if (vendedor.getFranquiaId() != gerenteLogado.getFranquiaId()) {
+            throw new ValidacaoException("Vendedor não pertence à sua franquia");
+        }
+        
+        return vendedor;
+    }
+    
+    public void editarVendedor(int vendedorId, String nome, String cpf, String email, String novaSenha) throws Exception {
+        verificarPermissaoGerente();
+        
+        Vendedor vendedor = buscarVendedorPorId(vendedorId);
+        
+        if (nome != null && !nome.trim().isEmpty()) {
+            vendedor.setNome(nome.trim());
+        }
+        
+        if (email != null && !email.trim().isEmpty()) {
+            // Verificar se o novo email já não está sendo usado por outro usuário
+            List<Usuario> usuarios = usuarioDAO.listarTodos();
+            for (Usuario u : usuarios) {
+                if (u.getId() != vendedorId && u.getEmail().equals(email.trim())) {
+                    throw new ValidacaoException("Email já está sendo usado por outro usuário");
+                }
+            }
+            vendedor.setEmail(email.trim());
+        }
+        
+        if (novaSenha != null && !novaSenha.trim().isEmpty()) {
+            vendedor.setSenha(novaSenha.trim());
+        }
+        
+        usuarioDAO.atualizar(vendedor);
+    }
+    
     public List<Vendedor> listarVendedoresPorVendas() throws Exception {
         verificarPermissaoGerente();
         

@@ -198,7 +198,7 @@ public class MeusPedidosPanel extends JPanel {
     }
     
     private void criarNovoPedido() {
-        NovoPedidoDialog dialog = new NovoPedidoDialog(
+        NovoPedidoDialogSimples dialog = new NovoPedidoDialogSimples(
             (JFrame) SwingUtilities.getWindowAncestor(this), 
             sistemaController
         );
@@ -239,7 +239,7 @@ public class MeusPedidosPanel extends JPanel {
         int pedidoId = (Integer) modeloTabela.getValueAt(linhaSelecionada, 0);
         String nomeCliente = (String) modeloTabela.getValueAt(linhaSelecionada, 1);
         
-        AdicionarItensDialog dialog = new AdicionarItensDialog(
+        AdicionarItensDialogSimples dialog = new AdicionarItensDialogSimples(
             (JFrame) SwingUtilities.getWindowAncestor(this), 
             sistemaController, 
             pedidoId, 

@@ -27,6 +27,7 @@ C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompa
 C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\util\InicializadorDados.java
 C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\util\ValidadorUtil.java
 C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\AdicionarItensDialog.java
+C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\AdicionarItensDialogSimples.java
 C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\CadastroFranquiaDialog.java
 C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\CadastroGerenteDialog.java
 C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\CadastroProdutoDialog.java
@@ -41,5 +42,7 @@ C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompa
 C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\MainView.java
 C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\MeusPedidosPanel.java
 C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\NovoPedidoDialog.java
+C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\NovoPedidoDialogSimples.java
+C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\PedidoListPanel.java
 C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\RankingVendedoresPanel.java
 C:\Users\84398\Documents\NetBeansProjects\Trabalho03OO\src\main\java\com\mycompany\trabalho03oo\view\swing\VendedorListPanel.java

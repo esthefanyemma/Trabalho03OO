@@ -299,14 +299,28 @@ public class MainView extends JFrame {
         contentPanel.repaint();
     }
     
-    private void mostrarCadastroVendedor() {
+    public void mostrarCadastroVendedor() {
         CadastroVendedorDialog dialog = new CadastroVendedorDialog(this, sistemaController);
         dialog.setVisible(true);
     }
     
+    public void mostrarEdicaoVendedor(int vendedorId) {
+        try {
+            Vendedor vendedor = sistemaController.buscarVendedorPorId(vendedorId);
+            if (vendedor != null) {
+                CadastroVendedorDialog dialog = new CadastroVendedorDialog(this, sistemaController, vendedor);
+                dialog.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Vendedor não encontrado.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao buscar vendedor: " + e.getMessage());
+        }
+    }
+    
     private void mostrarListaVendedores() {
         contentPanel.removeAll();
-        contentPanel.add(new VendedorListPanel(sistemaController), BorderLayout.CENTER);
+        contentPanel.add(new VendedorListPanel(sistemaController, this), BorderLayout.CENTER);
         contentPanel.revalidate();
         contentPanel.repaint();
     }
@@ -691,55 +705,14 @@ public class MainView extends JFrame {
     }
     
     private void mostrarPedidosFranquia() {
-        try {
-            Franquia franquia = sistemaController.buscarFranquiaGerente();
-            
-            if (franquia == null) {
-                JOptionPane.showMessageDialog(this,
-                    "Franquia não encontrada.",
-                    "Erro",
-                    JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            
-            List<Pedido> pedidos = sistemaController.listarPedidosFranquia(franquia.getId());
-            
-            if (pedidos.isEmpty()) {
-                JOptionPane.showMessageDialog(this,
-                    "Nenhum pedido encontrado para esta franquia.",
-                    "Pedidos",
-                    JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
-            
-            // Criar uma visualização simples para os pedidos
-            StringBuilder info = new StringBuilder("Pedidos da Franquia:\\n\\n");
-            for (Pedido pedido : pedidos) {
-                info.append(String.format("ID: %d - Cliente: %s - Status: %s - Total: R$ %.2f\\n",
-                    pedido.getId(), pedido.getNomeCliente(), 
-                    pedido.getStatus() != null ? pedido.getStatus().getDescricao() : "N/A",
-                    pedido.getValorTotal()));
-            }
-            
-            JTextArea textArea = new JTextArea(info.toString());
-            textArea.setEditable(false);
-            textArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
-            
-            JScrollPane scrollPane = new JScrollPane(textArea);
-            scrollPane.setPreferredSize(new Dimension(600, 400));
-            
-            JOptionPane.showMessageDialog(this, scrollPane, "Pedidos da Franquia", JOptionPane.INFORMATION_MESSAGE);
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,
-                "Erro ao carregar pedidos: " + e.getMessage(),
-                "Erro",
-                JOptionPane.ERROR_MESSAGE);
-        }
+        contentPanel.removeAll();
+        contentPanel.add(new PedidoListPanel(sistemaController), BorderLayout.CENTER);
+        contentPanel.revalidate();
+        contentPanel.repaint();
     }
     
     private void mostrarNovoPedido() {
-        NovoPedidoDialog dialog = new NovoPedidoDialog(this, sistemaController);
+        NovoPedidoDialogSimples dialog = new NovoPedidoDialogSimples(this, sistemaController);
         dialog.setVisible(true);
     }
     

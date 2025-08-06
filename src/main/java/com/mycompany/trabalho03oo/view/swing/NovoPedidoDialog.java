@@ -37,104 +37,29 @@ public class NovoPedidoDialog extends JDialog {
     }
     
     private void initializeComponents() {
-        Font fieldFont = new Font("Segoe UI", Font.PLAIN, 12);
-        
-        // Dados do cliente - campos estilizados
+        // Dados do cliente
         txtNomeCliente = new JTextField(20);
-        txtNomeCliente.setFont(fieldFont);
-        txtNomeCliente.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
-            BorderFactory.createEmptyBorder(8, 10, 8, 10)
-        ));
-        
         txtTelefoneCliente = new JTextField(15);
-        txtTelefoneCliente.setFont(fieldFont);
-        txtTelefoneCliente.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
-            BorderFactory.createEmptyBorder(8, 10, 8, 10)
-        ));
-        
         txtEmailCliente = new JTextField(20);
-        txtEmailCliente.setFont(fieldFont);
-        txtEmailCliente.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
-            BorderFactory.createEmptyBorder(8, 10, 8, 10)
-        ));
         
-        // Endereço de entrega - campos estilizados
+        // Endereço de entrega
         txtRua = new JTextField(25);
-        txtRua.setFont(fieldFont);
-        txtRua.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
-            BorderFactory.createEmptyBorder(8, 10, 8, 10)
-        ));
-        
         txtNumero = new JTextField(5);
-        txtNumero.setFont(fieldFont);
-        txtNumero.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
-            BorderFactory.createEmptyBorder(8, 10, 8, 10)
-        ));
-        
         txtCidade = new JTextField(15);
-        txtCidade.setFont(fieldFont);
-        txtCidade.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
-            BorderFactory.createEmptyBorder(8, 10, 8, 10)
-        ));
-        
         txtEstado = new JTextField(10);
-        txtEstado.setFont(fieldFont);
-        txtEstado.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
-            BorderFactory.createEmptyBorder(8, 10, 8, 10)
-        ));
-        
         txtCep = new JTextField(10);
-        txtCep.setFont(fieldFont);
-        txtCep.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
-            BorderFactory.createEmptyBorder(8, 10, 8, 10)
-        ));
         
-        // Opções do pedido - comboboxes estilizados
+        // Opções do pedido
         cbFormaPagamento = new JComboBox<>(FormaPagamento.values());
-        cbFormaPagamento.setFont(fieldFont);
-        cbFormaPagamento.setBackground(Color.WHITE);
-        cbFormaPagamento.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200), 1));
-        cbFormaPagamento.setPreferredSize(new Dimension(200, 35));
-        
         cbModoEntrega = new JComboBox<>(ModoEntrega.values());
-        cbModoEntrega.setFont(fieldFont);
-        cbModoEntrega.setBackground(Color.WHITE);
-        cbModoEntrega.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200), 1));
-        cbModoEntrega.setPreferredSize(new Dimension(200, 35));
         
         txtObservacoes = new JTextArea(3, 30);
-        txtObservacoes.setFont(fieldFont);
         txtObservacoes.setLineWrap(true);
         txtObservacoes.setWrapStyleWord(true);
-        txtObservacoes.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
-            BorderFactory.createEmptyBorder(8, 10, 8, 10)
-        ));
         
-        // Botões estilizados
+        // Botões
         btnCriar = new JButton("Criar Pedido");
-        btnCriar.setFont(new Font("Segoe UI", Font.BOLD, 12));
-        btnCriar.setBackground(new Color(40, 167, 69));
-        btnCriar.setForeground(Color.WHITE);
-        btnCriar.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-        btnCriar.setFocusPainted(false);
-        btnCriar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
         btnCancelar = new JButton("Cancelar");
-        btnCancelar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        btnCancelar.setBackground(new Color(108, 117, 125));
-        btnCancelar.setForeground(Color.WHITE);
-        btnCancelar.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-        btnCancelar.setFocusPainted(false);
-        btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
     
     private void setupLayout() {

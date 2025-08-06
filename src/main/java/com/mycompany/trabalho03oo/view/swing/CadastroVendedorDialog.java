@@ -1,12 +1,13 @@
 package com.mycompany.trabalho03oo.view.swing;
 
 import com.mycompany.trabalho03oo.controller.SistemaController;
+import com.mycompany.trabalho03oo.model.Vendedor;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * Diálogo para cadastro de vendedor
+ * Diálogo para cadastro/edição de vendedor
  * @author 84398
  */
 public class CadastroVendedorDialog extends JDialog {
@@ -16,12 +17,28 @@ public class CadastroVendedorDialog extends JDialog {
     private JTextField cpfField;
     private JTextField emailField;
     private JPasswordField senhaField;
+    private Vendedor vendedorEdicao;
+    private boolean modoEdicao;
     
+    // Construtor para cadastro
     public CadastroVendedorDialog(Frame parent, SistemaController sistemaController) {
         super(parent, "Cadastrar Vendedor", true);
         this.sistemaController = sistemaController;
+        this.modoEdicao = false;
+        this.vendedorEdicao = null;
         initializeComponents();
         setupLayout();
+    }
+    
+    // Construtor para edição
+    public CadastroVendedorDialog(Frame parent, SistemaController sistemaController, Vendedor vendedor) {
+        super(parent, "Editar Vendedor", true);
+        this.sistemaController = sistemaController;
+        this.modoEdicao = true;
+        this.vendedorEdicao = vendedor;
+        initializeComponents();
+        setupLayout();
+        preencherCampos();
     }
     
     private void initializeComponents() {
@@ -42,7 +59,7 @@ public class CadastroVendedorDialog extends JDialog {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         
-        JLabel titleLabel = new JLabel("Cadastro de Novo Vendedor");
+        JLabel titleLabel = new JLabel(modoEdicao ? "Editar Vendedor" : "Cadastro de Novo Vendedor");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2;
         mainPanel.add(titleLabel, gbc);
@@ -67,6 +84,16 @@ public class CadastroVendedorDialog extends JDialog {
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
+    private void preencherCampos() {
+        if (vendedorEdicao != null) {
+            nomeField.setText(vendedorEdicao.getNome());
+            cpfField.setText(vendedorEdicao.getCpf());
+            cpfField.setEditable(false); // CPF não deve ser editável
+            emailField.setText(vendedorEdicao.getEmail());
+            // Senha fica vazia por segurança - só altera se preencher
+        }
+    }
+    
     private void addFormField(JPanel panel, GridBagConstraints gbc, int row, String labelText, JComponent field) {
         gbc.gridx = 0; gbc.gridy = row;
         panel.add(new JLabel(labelText), gbc);
@@ -84,14 +111,31 @@ public class CadastroVendedorDialog extends JDialog {
             String email = emailField.getText().trim();
             String senha = new String(senhaField.getPassword());
             
-            if (nome.isEmpty() || cpf.isEmpty() || email.isEmpty() || senha.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Todos os campos são obrigatórios.");
+            if (nome.isEmpty() || cpf.isEmpty() || email.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Nome, CPF e email são obrigatórios.");
                 return;
             }
             
-            sistemaController.cadastrarVendedor(nome, cpf, email, senha);
+            if (modoEdicao) {
+                // Edição - senha é opcional
+                if (senha.isEmpty()) {
+                    // Manter senha atual
+                    sistemaController.editarVendedor(vendedorEdicao.getId(), nome, cpf, email, null);
+                } else {
+                    // Alterar senha
+                    sistemaController.editarVendedor(vendedorEdicao.getId(), nome, cpf, email, senha);
+                }
+                JOptionPane.showMessageDialog(this, "Vendedor editado com sucesso!");
+            } else {
+                // Cadastro - senha é obrigatória
+                if (senha.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Senha é obrigatória para cadastro.");
+                    return;
+                }
+                sistemaController.cadastrarVendedor(nome, cpf, email, senha);
+                JOptionPane.showMessageDialog(this, "Vendedor cadastrado com sucesso!");
+            }
             
-            JOptionPane.showMessageDialog(this, "Vendedor cadastrado com sucesso!");
             dispose();
             
         } catch (Exception e) {
