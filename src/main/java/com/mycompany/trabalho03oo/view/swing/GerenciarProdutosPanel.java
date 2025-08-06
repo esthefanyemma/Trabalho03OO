@@ -1,14 +1,27 @@
 package com.mycompany.trabalho03oo.view.swing;
 
-import com.mycompany.trabalho03oo.controller.SistemaController;
-import com.mycompany.trabalho03oo.model.*;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
+import com.mycompany.trabalho03oo.controller.SistemaController;
+import com.mycompany.trabalho03oo.model.Franquia;
+import com.mycompany.trabalho03oo.model.Produto;
 
 /**
  * Panel para gerenciamento de produtos (Gerente)
@@ -58,7 +71,13 @@ public class GerenciarProdutosPanel extends JPanel {
         };
         tabelaProdutos = new JTable(modeloTabela);
         tabelaProdutos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tabelaProdutos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tabelaProdutos.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        tabelaProdutos.setRowHeight(25);
+        tabelaProdutos.setGridColor(new Color(240, 240, 240));
+        tabelaProdutos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelaProdutos.getTableHeader().setBackground(new Color(248, 249, 250));
+        tabelaProdutos.getTableHeader().setForeground(new Color(52, 58, 64));
+        tabelaProdutos.getTableHeader().setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(220, 220, 220)));
         
         // Botões simples
         btnCadastrar = new JButton("Cadastrar Produto");
@@ -92,19 +111,6 @@ public class GerenciarProdutosPanel extends JPanel {
         
         add(panelBotoes, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
-        
-        // Panel inferior com informações - mais elegante
-        JPanel panelInfo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        panelInfo.setBackground(new Color(248, 249, 250));
-        panelInfo.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createMatteBorder(1, 0, 0, 0, new Color(220, 220, 220)),
-            BorderFactory.createEmptyBorder(10, 10, 10, 10)
-        ));
-        JLabel lblInfo = new JLabel("Selecione um produto para editar ou remover");
-        lblInfo.setFont(new Font("Segoe UI", Font.ITALIC, 12));
-        lblInfo.setForeground(new Color(108, 117, 125));
-        panelInfo.add(lblInfo);
-        add(panelInfo, BorderLayout.SOUTH);
     }
     
     private void setupListeners() {

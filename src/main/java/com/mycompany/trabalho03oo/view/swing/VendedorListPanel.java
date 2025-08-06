@@ -1,12 +1,24 @@
 package com.mycompany.trabalho03oo.view.swing;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 import com.mycompany.trabalho03oo.controller.SistemaController;
 import com.mycompany.trabalho03oo.model.Vendedor;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.util.List;
 
 /**
  * Painel para listar vendedores
@@ -37,6 +49,7 @@ public class VendedorListPanel extends JPanel {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createTitledBorder("Vendedores da Franquia"));
         
+        // Criar tabela padrão
         String[] columnNames = {"ID", "Nome", "Email", "Total Vendas", "Qtd Vendas", "Ticket Médio"};
         tableModel = new DefaultTableModel(columnNames, 0) {
             @Override
@@ -47,6 +60,12 @@ public class VendedorListPanel extends JPanel {
         
         table = new JTable(tableModel);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        table.setRowHeight(25);
+        table.setGridColor(new Color(240, 240, 240));
+        table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        table.getTableHeader().setBackground(new Color(248, 249, 250));
+        table.getTableHeader().setForeground(new Color(52, 58, 64));
         table.getTableHeader().setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(220, 220, 220)));
         
         // Configurar larguras das colunas
@@ -57,7 +76,7 @@ public class VendedorListPanel extends JPanel {
         table.getColumnModel().getColumn(4).setPreferredWidth(100); // Qtd Vendas
         table.getColumnModel().getColumn(5).setPreferredWidth(120); // Ticket Médio
         
-        // Botões
+        // Botões simples
         btnCadastrar = new JButton("Cadastrar");
         btnEditar = new JButton("Editar");
         btnRemover = new JButton("Remover");

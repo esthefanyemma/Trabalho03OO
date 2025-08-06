@@ -1,12 +1,23 @@
 package com.mycompany.trabalho03oo.view.swing;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+
 import com.mycompany.trabalho03oo.controller.SistemaController;
 import com.mycompany.trabalho03oo.model.Vendedor;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.util.List;
 
 /**
  * Painel para mostrar ranking de vendedores
@@ -36,6 +47,13 @@ public class RankingVendedoresPanel extends JPanel {
         
         table = new JTable(tableModel);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        table.setRowHeight(25);
+        table.setGridColor(new Color(240, 240, 240));
+        table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        table.getTableHeader().setBackground(new Color(248, 249, 250));
+        table.getTableHeader().setForeground(new Color(52, 58, 64));
+        table.getTableHeader().setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(220, 220, 220)));
         
         // Configurar larguras das colunas
         table.getColumnModel().getColumn(0).setMaxWidth(80);   // Posição
@@ -58,8 +76,15 @@ public class RankingVendedoresPanel extends JPanel {
         
         add(topPanel, BorderLayout.NORTH);
         
-        // Tabela
+        // Tabela com scroll padrão
         JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setPreferredSize(new Dimension(900, 450));
+        scrollPane.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
+            BorderFactory.createEmptyBorder(1, 1, 1, 1)
+        ));
+        scrollPane.getViewport().setBackground(Color.WHITE);
+        
         add(scrollPane, BorderLayout.CENTER);
     }
     

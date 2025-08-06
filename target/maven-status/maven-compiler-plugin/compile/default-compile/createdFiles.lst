@@ -5,6 +5,7 @@ com\mycompany\trabalho03oo\dao\PedidoDAO.class
 com\mycompany\trabalho03oo\view\swing\EdicaoProdutoDialog$1.class
 com\mycompany\trabalho03oo\exceptions\PermissaoException.class
 com\mycompany\trabalho03oo\exceptions\ContaBloqueadaException.class
+com\mycompany\trabalho03oo\view\swing\CadastroFranquiaDialog$1.class
 com\mycompany\trabalho03oo\view\swing\RankingVendedoresPanel.class
 com\mycompany\trabalho03oo\controller\SistemaController.class
 com\mycompany\trabalho03oo\view\swing\CadastroFranquiaDialog$LimitedDocument.class
@@ -18,6 +19,7 @@ com\mycompany\trabalho03oo\exceptions\NegocioException.class
 com\mycompany\trabalho03oo\view\swing\MeusPedidosPanel$2.class
 com\mycompany\trabalho03oo\view\swing\CadastroFranquiaDialog$GerenteItem.class
 com\mycompany\trabalho03oo\dao\UsuarioDAO.class
+com\mycompany\trabalho03oo\view\swing\CadastroGerenteDialog$2.class
 com\mycompany\trabalho03oo\view\swing\LoginView$1.class
 com\mycompany\trabalho03oo\view\swing\AdicionarItensDialog$2.class
 com\mycompany\trabalho03oo\view\swing\EdicaoFranquiaDialog.class
@@ -35,6 +37,7 @@ com\mycompany\trabalho03oo\view\swing\FranquiaListPanel$1.class
 com\mycompany\trabalho03oo\view\swing\GerenteListPanel$1.class
 com\mycompany\trabalho03oo\exceptions\ArquivoException.class
 com\mycompany\trabalho03oo\model\Vendedor.class
+com\mycompany\trabalho03oo\Main.class
 com\mycompany\trabalho03oo\view\swing\GerenciarProdutosPanel$1.class
 com\mycompany\trabalho03oo\view\swing\CadastroProdutoDialog$1.class
 com\mycompany\trabalho03oo\view\swing\AdicionarItensDialog.class
@@ -80,6 +83,7 @@ com\mycompany\trabalho03oo\view\swing\MeusPedidosPanel$1.class
 com\mycompany\trabalho03oo\exceptions\SistemaException.class
 com\mycompany\trabalho03oo\view\swing\MeusPedidosPanel.class
 com\mycompany\trabalho03oo\model\Produto.class
+com\mycompany\trabalho03oo\view\swing\CadastroGerenteDialog$1.class
 com\mycompany\trabalho03oo\exceptions\FaixaInvalidaException.class
 com\mycompany\trabalho03oo\model\ItemPedido.class
 com\mycompany\trabalho03oo\test\ValidadorUtilTest.class

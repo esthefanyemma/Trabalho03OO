@@ -1,12 +1,33 @@
 package com.mycompany.trabalho03oo.view.swing;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.RenderingHints;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import com.mycompany.trabalho03oo.controller.SistemaController;
 import com.mycompany.trabalho03oo.model.Endereco;
 import com.mycompany.trabalho03oo.model.Gerente;
-
-import javax.swing.*;
-import java.awt.*;
-import java.util.List;
 
 /**
  * Diálogo para cadastro de franquia
@@ -56,27 +77,42 @@ public class CadastroFranquiaDialog extends JDialog {
     
     private void setupLayout() {
         setLayout(new BorderLayout());
+        getContentPane().setBackground(Color.WHITE);
         
-        // Painel principal
+        // Header com gradiente
+        JPanel headerPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                Graphics2D g2 = (Graphics2D) g.create();
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                
+                GradientPaint gradient = new GradientPaint(
+                    0, 0, new Color(16, 185, 129),
+                    0, getHeight(), new Color(5, 150, 105)
+                );
+                g2.setPaint(gradient);
+                g2.fillRect(0, 0, getWidth(), getHeight());
+                g2.dispose();
+            }
+        };
+        headerPanel.setPreferredSize(new Dimension(0, 60));
+        headerPanel.setLayout(new BorderLayout());
+        
+        JLabel titleLabel = new JLabel("🏢 Cadastro de Nova Franquia");
+        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 25, 0, 0));
+        headerPanel.add(titleLabel, BorderLayout.CENTER);
+        
+        // Painel principal com formulário
         JPanel mainPanel = new JPanel(new GridBagLayout());
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        mainPanel.setBackground(Color.WHITE);
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(25, 25, 20, 25));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.anchor = GridBagConstraints.WEST;
         
-        // Título
-        JLabel titleLabel = new JLabel("Cadastro de Nova Franquia");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        gbc.gridx = 0; gbc.gridy = 0;
-        gbc.gridwidth = 2;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        mainPanel.add(titleLabel, gbc);
-        
-        // Separador
-        gbc.gridy = 1;
-        mainPanel.add(new JSeparator(), gbc);
-        
-        // Campos do formulário
+        // Campos do formulário (mantendo a estrutura original)
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.NONE;
         
