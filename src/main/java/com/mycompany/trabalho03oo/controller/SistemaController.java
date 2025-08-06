@@ -397,9 +397,9 @@ public class SistemaController {
         
         ValidadorUtil.validarStringObrigatoria(nome, "Nome do produto");
         ValidadorUtil.validarStringObrigatoria(descricao, "Descrição");
-        ValidadorUtil.validarValorMonetario(preco, "Preço");
-        ValidadorUtil.validarQuantidade(quantidadeEstoque, "Quantidade em estoque");
-        ValidadorUtil.validarQuantidade(estoqueMinimo, "Estoque mínimo");
+        ValidadorUtil.validarValorPositivo(preco, "Preço");
+        ValidadorUtil.validarFaixaInteira(quantidadeEstoque, "Quantidade em estoque", 0, 999999);
+        ValidadorUtil.validarFaixaInteira(estoqueMinimo, "Estoque mínimo", 0, 999999);
         
         int proximoId = produtoDAO.obterProximoId();
         Produto produto = new Produto(proximoId, nome, descricao, preco, quantidadeEstoque, franquiaId);
@@ -425,9 +425,9 @@ public class SistemaController {
         
         ValidadorUtil.validarStringObrigatoria(nome, "Nome do produto");
         ValidadorUtil.validarStringObrigatoria(descricao, "Descrição");
-        ValidadorUtil.validarValorMonetario(preco, "Preço");
-        ValidadorUtil.validarQuantidade(quantidadeEstoque, "Quantidade em estoque");
-        ValidadorUtil.validarQuantidade(estoqueMinimo, "Estoque mínimo");
+        ValidadorUtil.validarValorPositivo(preco, "Preço");
+        ValidadorUtil.validarFaixaInteira(quantidadeEstoque, "Quantidade em estoque", 0, 999999);
+        ValidadorUtil.validarFaixaInteira(estoqueMinimo, "Estoque mínimo", 0, 999999);
         
         produto.setNome(nome);
         produto.setDescricao(descricao);
@@ -549,7 +549,7 @@ public class SistemaController {
             throw new ValidacaoException("Estoque insuficiente. Disponível: " + produto.getQuantidadeEstoque());
         }
         
-        ValidadorUtil.validarQuantidade(quantidade, "Quantidade");
+        ValidadorUtil.validarFaixaInteira(quantidade, "Quantidade", 0, 999999);
         
         ItemPedido item = new ItemPedido();
         item.setProdutoId(produtoId);

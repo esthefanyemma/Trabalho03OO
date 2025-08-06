@@ -16,8 +16,17 @@ import java.util.List;
  */
 public class UsuarioDAO implements GenericDAO<Usuario> {
     
-    private static final String ARQUIVO = "usuarios.txt";
+    private static final String ARQUIVO_PADRAO = "usuarios.txt";
     private static final String SEPARADOR = ";";
+    private String nomeArquivo;
+    
+    public UsuarioDAO() {
+        this.nomeArquivo = ARQUIVO_PADRAO;
+    }
+    
+    public UsuarioDAO(String nomeArquivo) {
+        this.nomeArquivo = nomeArquivo;
+    }
     
     @Override
     public void salvar(Usuario usuario) throws Exception {
@@ -66,7 +75,7 @@ public class UsuarioDAO implements GenericDAO<Usuario> {
     @Override
     public List<Usuario> listarTodos() throws Exception {
         List<Usuario> usuarios = new ArrayList<>();
-        File arquivo = new File(ARQUIVO);
+        File arquivo = new File(nomeArquivo);
         
         if (!arquivo.exists()) {
             return usuarios;
@@ -132,7 +141,7 @@ public class UsuarioDAO implements GenericDAO<Usuario> {
     }
     
     private void salvarTodos(List<Usuario> usuarios) throws Exception {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(ARQUIVO))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(nomeArquivo))) {
             for (Usuario usuario : usuarios) {
                 writer.println(formatarLinha(usuario));
             }

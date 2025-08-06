@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.mycompany.trabalho03oo.test.ValidadorUtilTest$ValidacoesBasicas
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.022 s -- in com.mycompany.trabalho03oo.test.ValidadorUtilTest$ValidacoesBasicas
