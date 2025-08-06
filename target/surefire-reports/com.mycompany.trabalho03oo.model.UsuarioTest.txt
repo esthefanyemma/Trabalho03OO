@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.trabalho03oo.model.UsuarioTest
 -------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in com.mycompany.trabalho03oo.model.UsuarioTest
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s -- in com.mycompany.trabalho03oo.model.UsuarioTest
