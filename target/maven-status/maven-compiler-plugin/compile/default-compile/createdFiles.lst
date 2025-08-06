@@ -50,6 +50,7 @@ com\mycompany\trabalho03oo\model\FormaPagamento.class
 com\mycompany\trabalho03oo\model\ModalidadeEntrega.class
 com\mycompany\trabalho03oo\view\swing\CadastroVendedorDialog.class
 com\mycompany\trabalho03oo\view\swing\LoginView$2.class
+com\mycompany\trabalho03oo\util\ValidadorUtil.class
 com\mycompany\trabalho03oo\Trabalho03OO.class
 com\mycompany\trabalho03oo\exceptions\ConflitoDadosException.class
 com\mycompany\trabalho03oo\dao\UsuarioDAO$1.class
@@ -67,6 +68,7 @@ com\mycompany\trabalho03oo\view\swing\GerenciarProdutosPanel$2.class
 com\mycompany\trabalho03oo\dao\ProdutoDAO.class
 com\mycompany\trabalho03oo\exceptions\DaoException.class
 com\mycompany\trabalho03oo\view\swing\RankingVendedoresPanel$1.class
+com\mycompany\trabalho03oo\util\ExemplosTestesException.class
 com\mycompany\trabalho03oo\exceptions\CredenciaisInvalidasException.class
 com\mycompany\trabalho03oo\view\swing\EdicaoProdutoDialog.class
 com\mycompany\trabalho03oo\model\Dono.class
